@@ -2,41 +2,45 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
-class Livre{
-  static String baseUrl = "https://jsonplaceholder.typicode.com";
+class Livre {
+  static String baseUrl = "http://127.0.0.1:8000";
   static Future<List> getAllLivre() async{
-    try{
-      var res = await http.get(Uri.parse(baseUrl+'/posts'));
+    try {
+      var res = await http.get(Uri.parse(baseUrl+'/produits'));
+
       if(res.statusCode == 200){
+        print(res.body);
         return jsonDecode(res.body);
       }
-      else{
+      else {
         return Future.error("erreur serveur");
       }
     }
-    catch(err){
+    catch(err) {
       return Future.error(err);
     }
   }
 
-  static Login(BuildContext context, login, password) async{
-     try{
+  static Login(BuildContext context, login, password) async {
+     try {
       var connection = {"email": login, "password": password};
       var res = await http.post(
-        Uri.parse("https://reqres.in/api/login"),
+        Uri.parse("http://localhost:8000/login"),
         body: connection
         );
-      if(res.statusCode == 200){
-        Navigator.pushNamed(context, '/liste');
+      if(res.statusCode == 200) {
+        Navigator.pushNamed(context, '/produits');
       }
       else{
         Navigator.pushNamed(context, '/');
       }
     }
-    catch(err){
+
+    catch(err) {
       return Future.error(err);
     }
    }
+
   static ajout(BuildContext context, title, body) async{
     try{
      
@@ -46,7 +50,7 @@ class Livre{
         body: data
         );
       if(res.statusCode == 201){
-        Navigator.pushNamed(context, '/liste', arguments: res.body
+        Navigator.pushNamed(context, '/utilisateurs', arguments: res.body
 
         );
       }
@@ -54,7 +58,8 @@ class Livre{
         Navigator.pushNamed(context, '/');
       }
     }
-    catch(err){
+
+    catch(err) {
       return Future.error(err);
     }
   }

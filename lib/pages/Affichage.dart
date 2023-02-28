@@ -43,11 +43,11 @@ class _AffichageState extends State<Affichage> {
                 itemBuilder: (context, i){
                   return Card(
                     child: ListTile(
-                      title: Text(snapshot.data![i]['title'], style: const TextStyle(fontSize: 30),),
+                      title: Text(snapshot.data![i]['nom'], style: const TextStyle(fontSize: 30),),
                       subtitle: Column(
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
-                          Text(snapshot.data![i]['body'], style: const TextStyle(fontSize: 20)),
+                          Text(snapshot.data![i]['description'], style: const TextStyle(fontSize: 20)),
                       ]),
                     ),
                   );

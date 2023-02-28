@@ -19,8 +19,8 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       routes: {
-        '/' : (context) => LoginPage(),
-        '/liste': (context) => Affichage(),
+        '/liste' : (context) => LoginPage(),
+        '/': (context) => Affichage(),
         '/ajout': (context) => Ajout()
       },
     );
