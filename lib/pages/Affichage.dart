@@ -6,6 +6,7 @@ import 'package:flutterapp/livre.dart';
 
 class Affichage extends StatefulWidget {
   const Affichage({ Key? key }) : super(key: key);
+  // const colorBar = Color.fromRGBO();
 
   @override
   State<Affichage> createState() => _AffichageState();
@@ -31,7 +32,7 @@ class _AffichageState extends State<Affichage> {
     }
      return Scaffold(
       appBar: AppBar(
-        title: const Text("liste livres"),
+        title: const Text("liste produits"),
       ),
       body: Container(
         child: FutureBuilder<List>(
