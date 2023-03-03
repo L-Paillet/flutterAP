@@ -44,16 +44,15 @@ class Livre {
   static ajout(BuildContext context, title, body) async{
     try{
      
-      Map<String,dynamic> data= {"title":title,"body":body};
+      Map<String,dynamic> data = {"title":title,"body":body};
       var res = await http.post(
         Uri.parse(baseUrl+'/posts'), 
         body: data
         );
-      if(res.statusCode == 201){
-        Navigator.pushNamed(context, '/utilisateurs', arguments: res.body
-
-        );
+      if(res.statusCode == 201) {
+        Navigator.pushNamed(context, '/utilisateurs', arguments: res.body);
       }
+      
       else{
         Navigator.pushNamed(context, '/');
       }
