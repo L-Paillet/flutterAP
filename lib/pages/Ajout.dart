@@ -4,7 +4,7 @@ import 'package:snippet_coder_utils/FormHelper.dart';
 import 'package:snippet_coder_utils/ProgressHUD.dart';
 
 class Ajout extends StatefulWidget {
-  const Ajout({ Key? key }) : super(key: key);
+  const Ajout({Key? key}) : super(key: key);
 
   @override
   State<Ajout> createState() => _AjoutState();
@@ -20,81 +20,77 @@ class _AjoutState extends State<Ajout> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-        title: const Text("Nouveau livre"),
+          title: const Text("Nouveau Produit"),
         ),
-        backgroundColor : Colors.white,
+        backgroundColor: Colors.white,
         body: ProgressHUD(
           child: Form(
             key: globalFormKey,
             child: _AjoutUI(context),
-            ),
-            inAsyncCall: isAPIcallProcess,
-            opacity: 0.3,
-            key: UniqueKey(),
           ),
+          inAsyncCall: isAPIcallProcess,
+          opacity: 0.3,
+          key: UniqueKey(),
+        ),
       ),
     );
   }
-  Widget _AjoutUI(BuildContext context){
+
+  Widget _AjoutUI(BuildContext context) {
     return SingleChildScrollView(
-      child:  Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const Padding(
-            padding: EdgeInsets.only(
-              left: 20,
-              top: 70,
-              bottom: 30
-            ),
-            child: Text("Titre :", style: TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 25,
-              color: Colors.blue 
+      child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Padding(
+              padding: EdgeInsets.only(left: 20, top: 70, bottom: 30),
+              child: Text(
+                "Nom du produit :",
+                style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 25,
+                    color: Colors.blue),
               ),
             ),
-          ),
-          FormHelper.inputFieldWidget(
-            context, 
-            "Title", 
-            "Title", 
-            (onValidateVal){
-              if(onValidateVal.isEmpty){
-                return "Le titre ne peut être vide";
+            FormHelper.inputFieldWidget(context, "Nom", "Nom", (onValidateVal) {
+              if (onValidateVal.isEmpty) {
+                return "Le nom ne peut pas être vide";
               }
               return null;
-            }, 
-            (onSaved){
+            }, (onSaved) {
               title = onSaved;
             },
-            borderFocusColor: Colors.blue,
-            borderColor: Colors.blue,
-            textColor: Colors.blue,
-            hintColor: Colors.blue.withOpacity(0.8),
-            borderRadius: 10
-            ),
+                borderFocusColor: Colors.blue,
+                borderColor: Colors.blue,
+                textColor: Colors.blue,
+                hintColor: Colors.blue.withOpacity(0.8),
+                borderRadius: 10),
             const Padding(
-              padding:  EdgeInsets.only(top:20,left: 20,),
-              child:  Text("résumé :", style: TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 25,
-              color: Colors.blue 
+              padding: EdgeInsets.only(
+                top: 20,
+                left: 20,
+              ),
+              child: Text(
+                "Description :",
+                style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 25,
+                    color: Colors.blue),
               ),
             ),
-            ),
             Padding(
-              padding: const EdgeInsets.only(top:10),
-              child:  FormHelper.inputFieldWidget(
-                context, 
-                "body", 
-                "résumé", 
-                (onValidateVal){
-                  if(onValidateVal.isEmpty){
-                    return "Le résumé ne peut être vide";
+              padding: const EdgeInsets.only(top: 10),
+              child: FormHelper.inputFieldWidget(
+                context,
+                "body",
+                "Description",
+                (onValidateVal) {
+                  if (onValidateVal.isEmpty) {
+                    return "La description ne peut pas être vide";
                   }
                   return null;
-                }, 
-                (onSaved){
+                },
+                (onSaved) {
                   body = onSaved;
                 },
                 borderFocusColor: Colors.blue,
@@ -102,32 +98,25 @@ class _AjoutState extends State<Ajout> {
                 textColor: Colors.blue,
                 hintColor: Colors.blue.withOpacity(0.8),
                 borderRadius: 10,
-                ),
-                
-                
+              ),
             ),
             const SizedBox(
               height: 20,
             ),
             Center(
-              child: FormHelper.submitButton(
-                "Validez", 
-                (){
-                  dynamic validate = globalFormKey.currentState?.validate();
-                  if(validate != null && validate){
-                    globalFormKey.currentState?.save();
-                    Livre.ajout(context, title, body);
-                  }             
-                },
-                btnColor: Colors.blue,
-                borderColor: Colors.white,
-                txtColor: Colors.white,
-                borderRadius: 10
-               ) ,
+              child: FormHelper.submitButton("Valider", () {
+                dynamic validate = globalFormKey.currentState?.validate();
+                if (validate != null && validate) {
+                  globalFormKey.currentState?.save();
+                  Livre.ajout(context, title, body);
+                }
+              },
+                  btnColor: Colors.blue,
+                  borderColor: Colors.white,
+                  txtColor: Colors.white,
+                  borderRadius: 10),
             )
-            
-          ]
-        ),
-      );
+          ]),
+    );
   }
 }
