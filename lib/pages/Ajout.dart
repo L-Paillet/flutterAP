@@ -49,7 +49,7 @@ class _AjoutState extends State<Ajout> {
                 style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 25,
-                    color: Colors.blue),
+                    color: Colors.black),
               ),
             ),
             FormHelper.inputFieldWidget(context, "Nom", "Nom", (onValidateVal) {
@@ -60,10 +60,10 @@ class _AjoutState extends State<Ajout> {
             }, (onSaved) {
               title = onSaved;
             },
-                borderFocusColor: Colors.blue,
-                borderColor: Colors.blue,
-                textColor: Colors.blue,
-                hintColor: Colors.blue.withOpacity(0.8),
+                borderFocusColor: Colors.black,
+                borderColor: Colors.black,
+                textColor: Colors.black,
+                hintColor: Colors.black.withOpacity(0.8),
                 borderRadius: 10),
             const Padding(
               padding: EdgeInsets.only(
@@ -75,7 +75,7 @@ class _AjoutState extends State<Ajout> {
                 style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 25,
-                    color: Colors.blue),
+                    color: Colors.black),
               ),
             ),
             Padding(
@@ -93,10 +93,10 @@ class _AjoutState extends State<Ajout> {
                 (onSaved) {
                   body = onSaved;
                 },
-                borderFocusColor: Colors.blue,
-                borderColor: Colors.blue,
-                textColor: Colors.blue,
-                hintColor: Colors.blue.withOpacity(0.8),
+                borderFocusColor: Colors.red,
+                borderColor: Colors.black,
+                textColor: Colors.black,
+                hintColor: Colors.black.withOpacity(0.8),
                 borderRadius: 10,
               ),
             ),
@@ -111,7 +111,7 @@ class _AjoutState extends State<Ajout> {
                   Livre.ajout(context, title, body);
                 }
               },
-                  btnColor: Colors.blue,
+                  btnColor: Colors.black,
                   borderColor: Colors.white,
                   txtColor: Colors.white,
                   borderRadius: 10),
