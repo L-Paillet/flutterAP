@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutterapp/livre.dart';
 import 'package:snippet_coder_utils/FormHelper.dart';
 import 'package:snippet_coder_utils/ProgressHUD.dart';
+import 'package:http/http.dart' as http;
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -33,6 +34,28 @@ class _LoginPageState extends State<LoginPage> {
       ),
     );
   }
+  // static String baseUrl = "http://localhost:8000";
+
+
+    static Login(BuildContext context, login, password) async {
+     try {
+      var connection = {"email": login, "password": password};
+      var res = await http.post(
+        Uri.parse("http://localhost:8000/login"),
+        body: connection
+        );
+      if(res.statusCode == 200) {
+        Navigator.pushNamed(context, '/produits');
+      }
+      else{
+        Navigator.pushNamed(context, '/');
+      }
+    }
+
+    catch(err) {
+      return Future.error(err);
+    }
+   }
 
   Widget _loginUI(BuildContext context) {
     return SingleChildScrollView(

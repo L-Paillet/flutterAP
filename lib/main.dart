@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutterapp/pages/Affichage.dart';
 import 'package:flutterapp/pages/Ajout.dart';
 import 'package:flutterapp/pages/LoginPage.dart';
-import 'package:flutterapp/livre.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,9 +14,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'connection flutter et nodeJS via express',
-      theme: ThemeData.dark(
-        // primarySwatch: Colors.blue,
-      ),
+      theme: ThemeData.dark(),
       routes: {
         '/liste' : (context) => LoginPage(),
         '/': (context) => Affichage(),
